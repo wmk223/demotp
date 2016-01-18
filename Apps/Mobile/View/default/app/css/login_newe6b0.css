@@ -1,0 +1,228 @@
+/*
+	2015-12-04
+	login page
+	by:sibu
+*/
+body{
+    min-height: 100%;
+    background-color: #FFFFFF;
+    font-size: 10px;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.login-box{
+    height: 400px;
+    padding-top: 110px;
+}
+.login-tit-box{
+    width: 220px;
+    height: 36px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.login-tit-box a{
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 16px;
+    text-align: center;
+    background-color: #ffffff;
+    font-size: 1.4em;
+    color: #999999;
+    display: inline-block;
+}
+.login-tit-box a.actived{
+    background-color: #FF4D6A;
+    color: #ffffff;
+}
+.login-info-form{
+    margin: 26px 26px 0 26px;
+}
+.login-info-phone{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    /*border-bottom: 1px solid #FF4D6A;*/
+    color: #333333;
+    font-size: 1.5em;
+    font-family: "helvetica";
+}
+.login-info-inbox{
+    width: 100%;
+    height: 34px;
+    margin-top: 16px;
+    border-bottom: 1px solid #FF4D6A;
+    display: flex;
+    justify-content: space-between;
+}
+.login-info-psd{
+    height: 32px;
+    line-height: 32px;
+    color: #333333;
+    font-size: 1.5em;
+    font-family: "helvetica";
+    display: block;
+    margin-top: 1px;
+    float: left;
+}
+.login-info-foget{
+    width: 80px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #FF4D6A;
+    float: right;
+}
+.login-info-btn{
+    width: 150px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    border-radius: 23px;
+    background-color: #FF4D6A;
+    font-size: 1.6em;
+    color: #ffffff;
+    display: block;
+    margin: 60px auto;
+}
+.login-info-yzm{
+    width: 80px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    background-color: #FF4D6A;
+    color: #ffffff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	    display: block;
+	float: right;
+}
+.login-info-yzm.actived{
+    background-color: #CCCCCC;
+}
+.login-info-border{ width: 100%; border-bottom: 1px solid #FF4D6A ;}
+
+@media only screen and (min-width: 320px)  {
+    body{
+        font-size: 10px;
+    }
+    .login-box{
+        height: 400px;
+        padding-top: 110px;
+    }
+    .login-tit-box{
+        width: 220px;
+        height: 36px;
+    }
+    .login-tit-box a{
+        width: 100px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 16px;
+    }
+    .login-info-form{
+        margin: 26px 26px 0 26px;
+    }
+    .login-info-phone{
+        height: 34px;
+        line-height: 34px;
+    }
+    .login-info-inbox{
+        height: 34px;
+        margin-top: 16px;
+    }
+    .login-info-psd{
+        height: 32px;
+        line-height: 32px;
+        margin-top: 1px;
+    }
+    .login-info-foget{
+        width: 80px;
+        height: 34px;
+        line-height: 34px;
+    }
+    .login-info-btn{
+        width: 150px;
+        height: 46px;
+        line-height: 46px;
+        border-radius: 23px;
+        margin: 60px auto;
+    }
+    .login-info-yzm{
+        width: 80px;
+        height: 33px;
+        line-height: 33px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+
+	}
+@media only screen and (min-width: 640px)  {
+
+    body{
+        font-size: 20px;
+    }
+    .login-box{
+        height: 800px;
+        padding-top: 220px;
+    }
+    .login-tit-box{
+        width: 440px;
+        height: 72px;
+    }
+    .login-tit-box a{
+        width: 200px;
+        height: 72px;
+        line-height: 72px;
+        border-radius: 32px;
+    }
+    .login-info-form{
+        margin: 52px 52px 0 52px;
+    }
+    .login-info-phone{
+        height: 68px;
+        line-height: 68px;
+    }
+    .login-info-inbox{
+        height: 68px;
+        margin-top: 32px;
+    }
+    .login-info-psd{
+        height: 64px;
+        line-height: 64px;
+        margin-top: 2px;
+    }
+    .login-info-foget{
+        width: 160px;
+        height: 68px;
+        line-height: 68px;
+    }
+    .login-info-btn{
+        width: 300px;
+        height: 92px;
+        line-height: 92px;
+        border-radius: 46px;
+        margin: 120px auto;
+    }
+    .login-info-yzm{
+        width: 160px;
+        height: 67px;
+        line-height: 67px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+
+
+}
+/*--==set the input tip "placeholder" text color (must put in end)(start)==--*/
+.login-info-form input::-webkit-input-placeholder {color:#cccccc;}
+.login-info-form input:-moz-placeholder {color:#cccccc;}
+.login-info-form input:-ms-input-placeholder {color:#cccccc;}​
+/*--==set the input tip "placeholder" text color(must put in end)(start)==--*/
+

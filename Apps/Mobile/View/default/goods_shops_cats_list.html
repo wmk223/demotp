@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telphone=no, email=no"/>
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>商品列表</title>
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/swipee6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/index0925e6b0.css?v=20151219t" rel="stylesheet"></head>
+<body>
+<include file="./Apps/Mobile/View/default/header_nav.html" />
+<!--<nav class="nav">-->
+	<!--<ul class="shoplist-bar-ul">-->
+		<!--<li><a href="../../96029.html"><i class="icon-nav1"></i><span class="tit">免税商店</span></a></li>-->
+		<!--<li>-->
+			<!--<a href="../12-1/96029.html"><img src="http://resources.sibu.cn/resource/load?path=resources/20151012/20151012154305488_100x100.png" class="lazy"><span class="tit">全身护理</span></a></li>-->
+		<!--<li>-->
+			<!--<a href="../14-1/96029.html"><img src="http://resources.sibu.cn/resource/load?path=resources/20151012/20151012154702106_100x100.png" class="lazy"><span class="tit">口腔护理</span></a></li>-->
+		<!--<li>-->
+			<!--<a href="../30-1/96029.html"><img src="http://resources.sibu.cn/resource/load?path=resources/20151027/20151027093244329_100x100.png" class="lazy"><span class="tit">母婴用品</span></a></li>-->
+	<!--</ul>-->
+<!--</nav>-->
+<div class="goods-list marbt120" style="margin-top:0;">
+	<ul class="list-ul">
+	</ul>
+	<p class="nodata" style="display:block; margin: 15px auto;  text-align:center;position: relative;"><img style=" height:16px;width:16px;display: inline-block;position: absolute;top: 50%;margin-top: -8px;" src="__ROOT__/Apps/Mobile/View/default/app/images/loading.gif"><span style="display: block; padding-left: 18px;margin-top: 2px; line-height: 20px; font-size: 14px; display: inline-block ">正在加载...</span>
+	</p>
+</div>
+<include file="./Apps/Mobile/View/default/footer.html" />
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.min.js"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/jquery.lazyload.mine6b0.js?v=20151219t"></script>
+<script>
+	var i = 1;
+	var winH = $(window).height(); //页面可视区域高度
+	var load = true;
+	if({$data}!=null){
+		loadData({$data});
+	}else{
+		$(".nodata").html('<span style="display: block; padding-left: 18px;margin-top: 2px; line-height: 20px; font-size: 14px; display: inline-block ">没有商品<br/>已全部加载完毕</span>');
+	}
+	var pageSize = 10;
+	$(window).scroll(function () {
+		var pageH = $(document.body).height();
+		var scrollT = $(window).scrollTop(); //滚动条top
+		var aa = (pageH - winH - scrollT) / winH;
+		if (aa < 1.2 && load == true) {
+			load = false;
+			getData(i);
+		}
+	});
+
+	function getData(page) {
+		var catId = {$catId};
+		var shopId = {$shopId};
+		$.ajax({
+			url:"{:U('Mobile/Goods/getAjaxShopsGoodsCatGoodsList')}",// 跳转到 action
+			data:{
+				'catId':catId,
+				'page':page,
+				'shopId':shopId
+			},
+			type:"GET",
+			success:function(data){
+				if (data.ok == 1) {
+					loadData(data.res);
+				} else {
+					$(".nodata").html('<span style="display: block; padding-left: 18px;margin-top: 2px; line-height: 20px; font-size: 14px; display: inline-block ">已全部加载完毕</span>');
+					return false;
+				}
+			},
+			error:function(e){
+				console.log(e);
+			},
+			dataType:"Json",
+		});
+	};
+
+	function loadData(data){
+		var str = '';
+		var url = "this.src='__ROOT__/Public/images/item-pic.jpg'";
+		$.each(data, function (index, $val) {
+			/**
+			 * @type {string}
+			 */
+			var goodsId = $val.goodsId;
+			var dataUrl = '/index.php/Mobile/Goods/getGoodsDetails/goodsId/'+ $val.goodsId +'.html';
+
+			str += '<li class="clearfix"><a href="'+dataUrl+'"><div class="goods-img left">' +
+					'<img src="' + $val.goodsThums + '" width="100" height="100" onError="'+url+'"/>';
+			str += '</div>' +
+					'<div class="goods-info left">' +
+					'<h2 class="name">' + $val.goodsName + '</h2>' +
+					'<div class="price-column">' +
+					'<span class="price">' +
+					'<var class="unit">￥</var><var class="value">' + $val.shopPrice + '</var></span>' +
+					'<div class="oldprice">' +
+					'<p class="line02">' +
+					'<var class="value">￥' + $val.marketPrice + '</var></p>' +
+					'</div></a>';
+			str += '<a href="/index.php/Mobile/Goods/getGoodsDetails/goodsId/'+ $val.goodsId +'.html"  class="index-cart"><i class="icon-cart-red"></i></a>'
+
+			str += '</div></div></li>';
+		});
+
+		$(".list-ul").append(str);
+		if(data.length == 1){
+			$(".nodata").html('<span style="display: block; padding-left: 18px;margin-top: 2px; line-height: 20px; font-size: 14px; display: inline-block ">已全部加载完毕</span>');
+			load = false;
+		}
+		if(data.length < pageSize)
+		{
+			$(".nodata").html('<span style="display: block; padding-left: 18px;margin-top: 2px; line-height: 20px; font-size: 14px; display: inline-block ">已全部加载完毕</span>');
+			load = false;
+		}else{
+			load = true;
+			i++;
+		}
+
+	};
+	$('.pop-bg .button1').click(function () {
+		$('.pop-bg').hide();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+﻿@media only screen and (min-width: 320px)  {
+    body {
+        font-size: 10px;
+    }
+}
+@media only screen and (min-width: 640px)  {
+    body {
+        font-size: 10px;
+    }
+}
+
+.first-layer {
+    overflow:hidden;
+}
+.mask-layer {
+  display: block;
+  top: 0;
+  left:102%;
+  z-index: 99999999;
+  position: absolute;
+  background-color: #fff;
+  min-height: 100%;
+  width:100%;
+  display:none;
+}
+    .mask-layer .close-button {
+        display:inline-block;
+        width:1.3em;
+        height:1.3em;
+        background:url('../images/close_button.png') no-repeat;
+        background-size:contain;
+        position:absolute;
+        right:15px;
+        top:15px;
+    }
+.pop-summury {
+    padding:15px;
+    border-bottom:1px solid #ededed;
+}
+ .pop-summury .img {
+     width:5.45em;
+     height:5.45em;
+     display:inline-block;
+     border:1px solid #ededed;
+     vertical-align:top;
+     margin-right:10px;
+ }
+.pop-summury .img > img {
+        width:100%;
+        vertical-align:top;
+    }
+
+ .pop-summury .main {
+        display:inline-block;
+        width:68%;
+    }
+ .pop-summury .main .name {
+  font-size:1.40em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+    }
+  .pop-summury .main .amount {
+       font-size:1.6em;
+    }
+.pop-summury .main .tip {
+     font-size:1.10em;
+        color:#FD375A;
+    }
+.pop-select {
+    padding:0 15px;
+}
+.pop-select >dl{
+    padding-top:20px;
+}
+.pop-select >dl dt {
+    color:#797878;
+    padding-bottom:8px;
+    font-size:1.4em;
+}
+.pop-select >dl dd {
+    color:#393939;
+    margin-top:8px;
+  
+}
+.pop-select >dl dd .ui-group {
+      display: block;
+  padding-top: 5px;
+}
+.pop-select > dl.sel-color a{
+    display:inline-block;
+    padding:5px 25px;
+    margin-right:6px;
+    border:1px solid #cccccc;
+    color:#000;
+      margin-top:8px;
+       font-size:1.15em;
+    border-radius:3px;
+    box-sizing: border-box;
+}
+.pop-select > dl.sel-color a.selected{
+    border: 1px solid #FD375A;
+}
+.pop-select > dl.sel-size a.selected{
+    border: 1px solid #FD375A;
+}
+.pop-select > dl.sel-size a{
+   display: inline-block;
+  padding: 4px 8px;
+  margin-right: 6px;
+  border: 1px solid #cccccc;
+  color: #000;
+  min-width: 4em;
+  text-align: center;
+    margin-bottom:6px;
+    font-size:1.15em;
+    border-radius:3px;
+    margin-top:8px;
+    box-sizing: border-box;
+
+}
+
+.pop-select > dl a.sku-selected {
+    border:1px solid #ff790c;
+    color:#ff790c;
+    border-radius: 3px;
+}
+.pop-select .sure-button {
+       display: block;
+  background-color: #FD375A;
+  color: #fff;
+  text-align: center;
+  font-size: 1.80em;
+  border-radius: 3px;
+  margin-top: 45px;
+  padding: 5px 0px;
+  margin-bottom:20px;
+  
+}
+.error-tip {
+  position: fixed;
+  left: 0px;
+  top: 33%;
+  background-color: #787878;
+  opacity: 0.8;
+  color: #fff;
+  display: block;
+  width: 66%;
+  height: 3.0em;
+  line-height: 3.0em;
+  text-align: center;
+  margin-left: 17%;
+  margin-right: 17%;
+  display: none;
+  border-radius: 3px;
+  font-size: 1.72em;
+}
+
+
+@media (min-width: 320px) {
+  
+.pop-select .minus-button,.pop-select .plus-button {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 26px;
+  vertical-align: top;
+  border: 1px solid #CCCCCC;
+}
+
+.pop-select  input {
+   border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  background-color: #ffffff;
+  text-align: center;
+  color: #000;
+  width:70px;
+  height:30px;
+  line-height:30px;
+  font-size:14px;
+}
+}
+@media (min-width: 640px) {
+    .pop-select .minus-button,.pop-select .plus-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 50px;
+  vertical-align: top;
+  border: 1px solid #a0a0a0;
+}
+
+.pop-select  input {
+   border-top: 1px solid #a0a0a0;
+  border-bottom: 1px solid #a0a0a0;
+  background-color: #ffffff;
+  text-align: center;
+  color: #000;
+  width:90px;
+  height:50px;
+  line-height:50px;
+  font-size:30px;
+
+}
+}
+
+/*sku 取消状态*/
+
+.of-stock {
+    background: #fff none repeat scroll 0 0;
+    border: 1px dashed #dedede !important;
+    color: #dedede !important;
+    cursor: not-allowed;
+}

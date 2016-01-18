@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>微信支付</title>
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/zsharee6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/cart-headere6b0.css?v=20151219t" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+</head>
+<body>
+<div class="zshowp-header clearfix">
+    <a class="back" href="{:U('Mobile/Cart/toCart')}"><img src="__ROOT__/Apps/Mobile/View/default/app/images/icon_back.png" alt=""><span style="float: left"></span></a>
+</div>
+<div class="zcart-box">
+    <div class="box">
+        <input type="hidden" id="orderIds" name="orderIds" value="{$orderIds}"/>
+        <input type="hidden" id="payCode" name="payCode" value="{$payCode}"/>
+        <input type="hidden" id="needPay" name="needPay" value="{$needPay}"/>
+        <div class="ok">
+            <h3>支付方式：微信支付</h3>
+            <volist name="orders" key="key" id="order">
+                <h3>订单号：{$key-1}</h3>
+                <volist name="order" id="goods">
+                    <div style="display: none">{$goods["goodsName"]}&nbsp;&nbsp;{$goods["goodsAttrName"]}</div>
+                </volist>
+            </volist>
+            <h3>总金额：￥{$needPay}</h3>
+        </div>
+    </div>
+
+    <div class="price">
+        <a class="account" href="{:U('Mobile/WxJsPay/index')}">确定付款</a>
+    </div>
+</div>
+<footer class="f-footer">
+    <ul class="footer-ul">
+        <li ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+            <p class="tit">首页</p></a></li>
+        <li ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+            <p class="tit">分类</p></a></li>
+        <li class="actived" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+            <notempty name="goodscnt">
+                <span class="cart_num">{$goodscnt}</span>
+            </notempty>
+            <p class="tit">购物车</p></a></li>
+        <li ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+            <p class="tit">我的</p></a></li>
+    </ul>
+</footer>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.mine6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+</body>
+</html>

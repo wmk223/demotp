@@ -1,0 +1,86 @@
+html{-webkit-text-size-adjust: 100%; font-size: 62.5%;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input,button, textarea, p, blockquote, th, td, hr,a,em{margin: 0; padding: 0; -webkit-box-sizing: border-box;}
+body{font-family:"microsoft yahei"!important; font-size: 10px; line-height: 1.5; overflow-x: hidden; -webkit-overflow-scrolling: touch;}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary{display: block;}
+
+a{background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent;}
+a:active{outline: 0;}
+img{border: 0;}
+h2,h3{font-weight: normal;}
+input{line-height: normal;outline: 0 none;-webkit-tap-highlight-color: transparent;font-family: "SimHei";}
+label{-webkit-tap-highlight-color: transparent;}
+/*input[type="button"],input[type="submit"],input[type="text"]{-webkit-appearance:none;}
+textarea{overflow: auto; resize: vertical;-webkit-appearance:none;}*/
+body{min-width: 320px;}
+ul,li{list-style: none;}
+
+.clb{clear:both;}
+.rel{position:relative;}
+.over-hidden{overflow:hidden;}
+.wrap{width:100%;}
+.mar-auto{margin:0 auto;}
+.abs{position:absolute;}
+
+.left{float:left;}
+.right{float:right;}
+.inline-b{display:inline-block;}
+input,textarea{
+    outline:none;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    blr:expression(this.onFocus=this.blur());
+    -moz-tap-highlight-color:rgba(0, 0, 0, 0);
+    -o-tap-highlight-color:rgba(0, 0, 0, 0);
+    -ms-tap-highlight-color:rgba(0, 0, 0, 0);
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+textarea{resize:none;}
+.mc1-input-width{width:100%;}
+select,input{
+    /*-webkit-appearance:none;*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);   }
+
+/**
+ * 重构 u, b, i, 标签；
+*/
+u {
+    text-decoration: none;
+}
+
+b {
+    font-weight: normal;
+}
+
+i {
+    font-style: normal;
+}
+/*
+ * 清除浮动类 (hasLayout + Block Formatting Context)；
+ * http://nicolasgallagher.com/micro-clearfix-hack/
+*/
+.clearfix, .fix-clean {
+    *zoom: 1;
+}
+.clearfix:before, .fix-clean:before,
+.clearfix:after , .fix-clean:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after, .fix-clean:after {
+    clear: both;
+}
+
+
+.width320{
+    width: 100%;
+}
+.width300{
+    width: 93.75%;
+}
+.width310{
+    width: 96.875%;
+}
+.width290{
+    width: 90.625%;
+}

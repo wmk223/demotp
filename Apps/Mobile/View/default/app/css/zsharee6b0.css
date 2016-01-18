@@ -1,0 +1,54 @@
+/*
+	2015-8-20
+	about share page  and cart_none page
+	by:sibu zxy
+*/
+/*--====zhare-box (start)====--*/
+body{
+    background-color: #ffffff;
+}
+.zhare-bg{position:fixed; left:0; top:0; width:100%; background:url(../images/z_share_bg.png); height:100%; z-index:9999999;}
+.zhare-box{ position:fixed; left:0; bottom:0; width:100%; z-index:9999999;}
+.z-share-arrow{ display:block; width:100%; max-width:640px; float:right;}
+.zhare-box-tit{ background:#fff; color:#535353; line-height:2.85em; height:2.85em; padding-left:1.07em;}
+.zhare-box-main{padding:1.083em 0.75em; color:#A7A7A7; overflow:hidden; background:#F2F2F2;}
+.zhare-item{ float:left; text-align:center; width:29%; /*width:33%;*/ }
+.zhare-item-py{width:40%;}
+.zhare-item-icon{ display:block; margin:0 auto;}
+.zhare-item-name{ text-align:center; padding:0.833em 0 1.083em 0;}
+/*--====zhare-box (end)====--*/
+/*--====zcart-none-box (start)===--*/
+.zcart-none-box{ height:100%; min-height:300px;}
+.zcart-none-img{ display:block; margin:0 auto 0.882em; padding-top:4em;}
+.zcart-none-txt{ text-align:center; padding-bottom:1.47em;color: #bb7856;}
+.zcart-none-btn{ display:block; background:#FA2A66; color:#fff !important; width:10em; line-height:2.76em; height:2.76em; text-align:center; margin:0 auto; -moz-border-radius:80px; -ms-border-radius:80px; -webkit-border-radius:80px; border-radius:80px;}
+.zcart-none-btn:hover,.zcart-none-btn:active,.zcart-none-btn:visited{color:#ffffff !important;}
+/*--====zcart-none-box (end)===--*/
+@media only screen and (min-width: 320px)  {
+	/*--====zhare-box (start)====--*/
+   .zhare-box-tit{ font-size:16px;}
+   .zhare-box-main{ font-size:14px;}
+   .zhare-item-icon{ width:45px;}
+   /*--====zhare-box (end)====--*/
+   /*--====zcart-none-box (start)===--*/
+   .zcart-none-box{ font-size:19px;}
+   .zcart-none-img{ width:136px;}
+   .zcart-none-btn{ font-size:16px;}
+   /*--====zcart-none-box (end)===--*/
+   .zcart-none-txt{font-size: 15px;}
+}
+@media only screen and (min-width: 640px)  {
+	/*--====zhare-box (start)====--*/
+   .zhare-box-tit{ font-size:28px;}
+   .zhare-box-main{ font-size:24px;}
+   .zhare-item-icon{ width:90px;}
+   /*--====zhare-box (end)====--*/
+   /*--====zcart-none-box (start)===--*/
+   .zcart-none-box{ font-size:34px;}
+   .zcart-none-img{ width:270px;}
+   .zcart-none-btn{ font-size:28px;}
+   /*--====zcart-none-box (end)===--*/
+    .zcart-none-txt{font-size: 30px;}
+}
+
+

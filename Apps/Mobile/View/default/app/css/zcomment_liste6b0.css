@@ -1,0 +1,95 @@
+/*
+	2015-9-15
+	about comment list page
+	by:sibu zxy
+*/
+/*--==header (start)==--*/
+.header {
+    text-align:center;
+    position:relative;
+    background:#fdfdfd;
+    border-bottom:1px solid #e5e5e5;
+}
+.f-header .icon-back,.header .icon-back {
+    display:block;
+    position:absolute;
+    left: 3.15%;
+    background:url('../images/icon_back.png') no-repeat;
+    background-size:contain;
+}
+/*--==header (end)==--*/
+/*--==zomment-main (start)==--*/
+.zcomment-main{ padding-bottom:120px;}
+.zcomment-main dl{ -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+/*--zcomment-pitem (start)--*/
+.zcomment-pitem{ width:100%; border-bottom:1px solid #e5e5e5; padding-top:0.8em}
+.zcomment-pername{ max-width:70%;overflow: hidden; text-overflow: ellipsis;  white-space: nowrap;display: block;}
+.zcomment-perimg{ display:block; -moz-border-radius:100%; -ms-border-radius:100%; -o-border-radius:100%; -webkit-border-radius:100%; border-radius:100%; float:left; }
+.zcomment-stary{ display:block; background:url(../images/start_yellow.png) no-repeat 0 0; }
+.zcomment-txt{ padding:0.37em 0 0.6em; font-size:100%;}
+.zcomment-othertxt{ color:#ccc; padding-bottom:0.5em;}
+.zcomment-odate{ padding-right:0.4em;}
+/*--zcomment-pitem (end)--*/
+/*--==zomment-main (end)==--*/
+@media (min-width: 320px) {
+	/*--==header (start)==--*/
+	.header {
+		height:44px;
+		line-height:44px;
+		font-size: 17px;
+	}
+    .f-header .icon-back, .header .icon-back {
+        top: 12px;
+        width: 10px;
+        height: 18px;
+    }
+	/*--==header (end)==--*/
+	/*--==zomment-main (start)==--*/
+	.zcomment-main dl{ padding-left:10px; padding-right:10px; font-size:14px;}
+	/*--zcomment-pitem (start)--*/
+	.zcomment-per{font-size:14px;}
+	.zomment-permess{ padding-top:5px; vertical-align:top;}
+	.zcomment-pername{ margin-right:9px;}
+	.zcomment-perimg{ width:30px; height:30px; margin-right:12px;}
+	.zcomment-stary{ width:83px; height:16px; background-size:168px; margin-top:12px;margin-left: -2px;}
+	.zcomment-stary-4{ background-position:-17px 0;}
+	.zcomment-stary-3{ background-position:-34px 0;}
+	.zcomment-stary-2{ background-position:-51px 0;}
+	.zcomment-stary-1{ background-position:-68px 0;}
+	.zcomment-stary-0{ background-position:-85px 0;}
+	.zcomment-othertxt{ font-size:10px;}
+	/*--zcomment-pitem (end)--*/
+	/*--==zomment-main (start)==--*/
+}
+
+
+@media (min-width: 640px) {
+	/*--==header (start)==--*/
+	.header {
+		height:88px;
+		line-height:88px;
+		font-size: 30px;
+	}
+    .f-header .icon-back, .header .icon-back {
+        top: 24px;
+        width: 20px;
+        height: 36px;
+    }
+	/*--==header (end)==--*/
+	/*--==zomment-main (start)==--*/
+	.zcomment-main dl{ padding-left:20px; padding-right:20px; font-size:28px;}
+	/*--zcomment-pitem (start)--*/
+	.zcomment-per{font-size:28px;}
+	.zomment-permess{ padding-top:10px; vertical-align:top;}
+	.zcomment-pername{ margin-right:18px;}
+	.zcomment-perimg{ width:60px; height:60px; margin-right:24px;}
+	.zcomment-stary{ width:166px; height:32px; background-size:336px; margin-top:16px;}
+	.zcomment-stary-4{ background-position:-34px 0;}
+	.zcomment-stary-3{ background-position:-68px 0;}
+	.zcomment-stary-2{ background-position:-102px 0;}
+	.zcomment-stary-1{ background-position:-135px 0;}
+	.zcomment-stary-0{ background-position:-170px 0;}
+	.zcomment-othertxt{ font-size:20px;}
+	/*--zcomment-pitem (end)--*/
+	/*--==zomment-main (start)==--*/
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>个人中心</title>
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/zshowproducte6b0.css?v=20151219t" rel="stylesheet"></head>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+<body>
+
+<div class="zshowp-header clearfix">
+    <a class="back" href="javascript:history.go(-1);"><img src="__ROOT__/Apps/Mobile/View/default/app/images/icon_back.png" alt=""></a>
+</div>
+
+<div class="my-commend" style="width: 100%">
+        <div class="box">
+            <h3>所在地</h3>
+        </div>
+        <div class="box">
+
+            <div class="wrap">
+                <select id='areaId1' onchange='javascript:getAreaList("areaId2",this.value,0)'>
+                    <option value=''>请选择</option>
+                    <volist name="areaList" id="area">
+                        <option value="{$area.areaId}">{$area.areaName}</option>
+                    </volist>
+                </select>
+                <select id='areaId2' onchange='javascript:getAreaList("areaId3",this.value,1)'>
+                    <option value=''>请选择</option>
+                </select>
+                <select id='areaId3'>
+                    <option value=''>请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="box">
+            <input type="text" class="full-width" id="address" name="address" placeholder="详细收货地址" />
+        </div>
+
+        <div class="box">
+            <h3>联系人</h3>
+            <input type="text" name="userName" id="userName" value="" placeholder="请输入收货人姓名" />
+        </div>
+
+        <div class="box">
+            <h3>手机号码</h3>
+            <input type="tel" name="userPhone" id="userPhone" value="" placeholder="请输入收货人手机号" />
+        </div>
+        <div class="box">
+            <h3 class="">设为默认</h3>
+            <label class="radio-inline">
+                <input type="radio" name="isDefault" id="yes" value="1" /> 是
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="isDefault" id="no" value="0" /> 否
+            </label>
+        </div>
+        <button class="button" onclick="editAddress()">保存</button>
+</div>
+<footer class="f-footer">
+    <ul class="footer-ul">
+        <li  ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+            <p class="tit">首页</p></a></li>
+        <li class="aa" ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+            <p class="tit">分类</p></a></li>
+        <li class="aa" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+            <notempty name="goodscnt">
+                <span class="cart_num">{$goodscnt}</span>
+            </notempty>
+            <p class="tit">购物车</p></a></li>
+        <li  class="actived" ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+            <p class="tit">我的</p></a></li>
+    </ul>
+</footer>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/idangerous.swiper.mine6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/zshowproducte6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script>
+    function getAreaList(objId,parentId,t,id){
+        var params = {};
+        params.parentId = parentId;
+        $('#'+objId).empty();
+        if(t<1){
+            $('#areaId3').empty();
+            $('#areaId3').html('<option value="">请选择</option>');
+        }
+        var html = [];
+        $.post("{:U('Mobile/Areas/queryByList')}",params,function(json,textStatus){
+            html.push('<option value="">请选择</option>');
+            if(json.status=='1' && json.list.length>0){
+                var opts = null;
+                for(var i=0;i<json.list.length;i++){
+                    opts = json.list[i];
+                    html.push('<option value="'+opts.areaId+'" '+((id==opts.areaId)?'selected':'')+'>'+opts.areaName+'</option>');
+                }
+            }
+            $('#'+objId).html(html.join(''));
+        },'json');
+    }
+    function editAddress(){
+        var params = {};
+        params.id = $('#id').val();
+        params.areaId1 = $('#areaId1').val();
+        params.areaId2 = $('#areaId2').val();
+        params.areaId3 = $('#areaId3').val();
+        params.address = $('#address').val();
+        params.userName = $('#userName').val();
+        params.userPhone = $('#userPhone').val();
+        params.isDefault = $("input[name='isDefault']:checked").val();
+        if(params.areaId1<1){
+            alert('请选择省');
+            return ;
+        }
+        if(params.areaId2<1){
+            alert('请选择市');
+            return ;
+        }
+        if(params.areaId3<1){
+            alert('请选择区县');
+            return ;
+        }
+        if(params.address==""){
+            alert('请输入详细地址');
+            return ;
+        }
+        if($('#userName').val()==null){
+            alert('请输入收货人姓名');
+            return ;
+        }
+        if(params.userPhone==""){
+            alert('请输入收货人手机号');
+            return ;
+        }
+        $.post("{:U('Mobile/UserAddress/edit')}",params,function(json,textStatus){
+            console.log(params);
+            if(json.status>0){
+                if(confirm("到个人中心查看？")) {
+                    location.href = "{:U('Mobile/Users/Index')}";
+                }
+            }else{
+                alert('添加错误');
+                return;
+            }
+        },'json');
+    }
+</script>
+</body>
+</html>

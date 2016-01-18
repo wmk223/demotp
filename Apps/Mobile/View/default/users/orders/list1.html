@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telphone=no, email=no"/>
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>个人中心</title>
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/zshowproducte6b0.css?v=20151219t" rel="stylesheet"></head>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+<body>
+
+<div class="zshowp-header clearfix">
+	<a href="{:U('Mobile/Users/index')}" class="zhowp-htab "><b>个人资料</b></a>
+	<a href="{:U('Mobile/Orders/queryByPage')}" class="zhowp-htab actived"><b>我的订单</b></a>
+</div>
+
+<div class="my-order">
+	<!--<div class="message">还没有购买纪录，赶快<a href="{:U('Mobile/Index/Index')}">去参加</a>吧</div>-->
+	<div class="status">
+		<a herf="" class="selected">未付<span style="font-weight: bolder;color: #f0a869;font-size: 15px;padding: 5px;">{$statusList[-2]}</span></a>
+		<a herf="" class="">已付<span style="font-weight: bolder;color: #f0a869;font-size: 15px;padding: 5px;">{$statusList[2]}</span></a>
+		<a herf="" class="">已完成<span style="font-weight: bolder;color: #f0a869;font-size: 15px;padding: 5px;">{$statusList[3]}</span></a>
+		<a herf="" class="">已评论<span style="font-weight: bolder;color: #f0a869;font-size: 15px;padding: 5px;">{$statusList[4]}</span></a>
+	</div>
+	<table class="table">
+		<tr>
+			<th><h4>商品照片</h4></th>
+			<th><h4>商品名称</h4></th>
+			<th><h4>状态</h4></th>
+			<th><h4>操作</h4></th>
+		</tr>
+		<volist name="orderList['root']" id="order" key='key1'>
+			<volist name="order['goodslist']" id="goods" key='key2'>
+				<tr>
+					<td><img src="__ROOT__/{$goods['goodsThums']}" style="width: 30px;height:30px" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" alt="placeholder+image" /></td>
+					<td><h4>{$goods.goodsName|msubstr=0,5,'utf-8',true}</h4></td>
+					<td><h4>已完成</h4></td>
+					<td>
+						<h4>
+							<if condition='$order["orderStatus"] gt 3'>
+								<if condition="$order['isAppraises'] eq 1">
+									<a href="" class="comment">已评论</a>
+									<a href="" class="comment">查看评论</a>
+									<else/>
+									<a  href="javascript:;" oclass="comment">评价</a>
+								</if>
+							</if>
+						</h4>
+					</td>
+				</tr>
+			</volist>
+		</volist>
+	</table>
+</div>
+<style>
+	.cart_num{
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		background-color: red;
+		border-radius: 100px;
+		position:fixed;
+		margin-right: 20px;
+		z-index: 100;
+		color: #FFFFFF;
+		text-align: center;
+	}
+</style>
+<footer class="f-footer">
+	<ul class="footer-ul">
+		<li ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+			<p class="tit">首页</p></a></li>
+		<li ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+			<p class="tit">分类</p></a></li>
+		<li ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+			<notempty name="goodscnt">
+				<span class="cart_num">{$goodscnt}</span>
+			</notempty>
+			<p class="tit">购物车</p></a></li>
+		<li class="actived"><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+			<p class="tit">我的</p></a></li>
+	</ul>
+</footer>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/idangerous.swiper.mine6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/zshowproducte6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+</body>
+</html>

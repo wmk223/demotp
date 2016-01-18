@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的收货地址</title>
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/zsharee6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/cart-headere6b0.css?v=20151219t" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+</head>
+<body>
+<div class="zshowp-header clearfix">
+    <a class="back" href="{:U('Mobile/Orders/checkOrderInfo',array('rnd'=>$rnd))}"><img src="__ROOT__/Apps/Mobile/View/default/app/images/icon_back.png" alt=""></a>
+</div>
+<div class="zcart-box">
+    <div class="box">
+        <volist name="list" id="vo">
+            <if condition="($vo['isDefault'] eq 1)">
+                <div class="all-pos selected">
+                    <input type="hidden" name="addressId" value="{$vo['addressId']}">
+                    <h3>收货人：{$vo.userName} 电话：{$vo.userPhone}</h3>
+                    <p>{$vo.address}</p>
+                    <img src="__ROOT__/Apps/Mobile/View/default/app/images/pop_havephone.png" alt="">
+                </div>
+            <else/>
+                <div class="all-pos">
+                    <input type="hidden" name="addressId" value="{$vo['addressId']}">
+                    <h3>收货人：{$vo.userName} 电话：{$vo.userPhone}</h3>
+                    <p>{$vo.address}</p>
+                    <img src="__ROOT__/Apps/Mobile/View/default/app/images/pop_havephone.png" alt="">
+                </div>
+            </if>
+        </volist>
+    </div>
+
+</div>
+<style>
+    .cart_num{
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        background-color: red;
+        border-radius: 100px;
+        position:fixed;
+        margin-right: 20px;
+        z-index: 100;
+        color: #FFFFFF;
+        text-align: center;
+    }
+</style>
+<footer class="f-footer">
+    <ul class="footer-ul">
+        <li  ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+            <p class="tit">首页</p></a></li>
+        <li class="aa" ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+            <p class="tit">分类</p></a></li>
+        <li class="aa" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+            <notempty name="goodscnt">
+                <span class="cart_num">{$goodscnt}</span>
+            </notempty>
+            <p class="tit">购物车</p></a></li>
+        <li  class="actived" ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+            <p class="tit">我的</p></a></li>
+    </ul>
+</footer>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.mine6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script>
+    $(function(){
+        $('.box').on('click',"div",function(){
+            var addressId = $(this).find('input[name=addressId]').val();
+            var _ = $(this);
+            $.post("{:U('Mobile/Users/isDefault')}",{'addressId':addressId},function(data) {
+                if(data.ok>0){
+                    _.addClass('selected').siblings().removeClass('selected');
+                }
+            },'json');
+        });
+    })
+</script>
+</body>
+</html>

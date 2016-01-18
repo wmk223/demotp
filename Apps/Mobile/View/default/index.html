@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+
+<meta name="format-detection" content="telphone=no, email=no"/>
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no" />
+<title>{$CONF['mallTitle']}</title>
+<link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+<link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+<link href="__ROOT__/Apps/Mobile/View/default/app/css/swipee6b0.css?v=20151219t" rel="stylesheet">
+<link href="__ROOT__/Apps/Mobile/View/default/app/css/index0925e6b0.css?v=20151219t" rel="stylesheet">
+<link href="__ROOT__/Apps/Mobile/View/default/app/css/ztopbare6b0.css?v=20151219t" rel="stylesheet"></head>
+<body>
+<include file="./Apps/Mobile/View/default/header_nav.html" />
+<div id='slider' class='swipe' style="overflow: hidden">
+	<div class='swipe-wrap'>
+		<volist name="indexAds" key="k" id="vo">
+			<div class='wrap'>
+				<a href="{$vo['adURL']}"/>
+				<img src="__ROOT__/{$vo['adFile']}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" class="lazy" style="width: 100%;">
+				</a>
+			</div>
+		</volist>
+	</div>
+	<ul class="ul_swipe">
+		<volist name="indexAds" key="k" id="vo">
+			<if condition="$k eq 1">
+				<li class="opcity100">&nbsp;</li>
+				<else/>
+				<li class="">&nbsp;</li>
+			</if>
+		</volist>
+</div>
+<div class="list">
+	<div class="goods-list">
+		<div class="list-title"><span class="title">新品</span>
+		</div>
+		<ul class="list-ul">
+			<volist name="goods" key="k" id="vo">
+			<li class="clearfix">
+				<div class="goods-img left"><a href="{:U('Mobile/Goods/getGoodsDetails',array('goodsId'=>$vo['goodsId']))}">
+					<img  width="100" height="100" class="lazy" onError="this.src='__ROOT__/Public/images/item-pic.jpg'"  src="__ROOT__/{$vo['goodsThums']}"/>
+				</a></div>
+				<div class="goods-info left">
+					<a href="{:U('Mobile/Goods/getGoodsDetails',array('goodsId'=>$vo['goodsId']))}">
+						<h2 class="name">{$vo.goodsName}</h2>
+						<div class="progressbar" data-countdown='{"disabled": false, "duration": 14608000, "prepering": false, "elapsed": -6992000, "distance":  21600000}'>
+							<dl class="barbox">
+							</dl>
+						</div>
+					</a>
+					<div class="price-column">
+					<span class="price">
+					<var class="unit">￥</var><var class="value">{$vo.shopPrice}</var></span>
+						<div class="oldprice">
+							<p class="line02">
+								<var class="value">￥{$vo.marketPrice}</var></p>
+						</div>
+						<a href="{:U('Mobile/Goods/getGoodsDetails',array('goodsId'=>$vo['goodsId']))}" class="index-cart"><i class="icon-cart-red"></i></a>
+					</div>
+				</div>
+			</li>
+			</volist>
+		</ul>
+		<a class="allgoodskill" href="{:U('Mobile/Goods/GoodsList')}">
+			更多商品
+		</a>
+	</div>
+	<div class="goods-list">
+		<div class="list-title"><i class="icon-roundstar"></i><span class="title">品牌热卖</span></div>
+		<ul class="banner-ul">
+			<volist name="brands" id="vo">
+			<li>
+				<a href="{:U('Mobile/Goods/getBrandsGoodsList',array('brandId'=>$vo['brandId']))}"><img onError="this.src='__ROOT__/Public/images/item-pic.jpg'" src="__ROOT__/{$vo['brandIco']}" class="lazy"></a></li>
+			</volist>
+		</ul>
+	</div>
+</div>
+<div></div>
+<include file="./Apps/Mobile/View/default/footer.html" />
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/swipee6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/myslidere6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/SRTimere6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/SRCountdowne6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/progressbare6b0.js?v=20151219t" charset="utf-8"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+</body>
+</html>

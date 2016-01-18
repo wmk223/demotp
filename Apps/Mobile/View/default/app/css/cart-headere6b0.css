@@ -1,0 +1,118 @@
+﻿.cart-header {
+    position:relative;
+    width:100%;
+    background:#fff;
+}
+.cart-header > .logo {
+    display:inline-block;
+        vertical-align: top;
+}
+.cart-header > .logo >img{
+}
+.cart-header > .introduce {
+    display:inline-block;
+}
+
+.cart-header > .introduce > .p2 > a.text {
+    color:#2f2f2f;
+   
+}
+.cart-header > .introduce > .p2 > .icon-star {
+    background:url('../images/icon_star.png') no-repeat;
+    background-size:contain;
+    display:inline-block;
+    vertical-align:middle;
+
+}
+
+.cart-header .download-button {
+  display: block;
+  position: absolute;
+  background: #fa2a66;
+  color: #fff !important;
+  text-align: center;
+}
+
+.cart-header .download-button:hover,.cart-header .download-button:active,.cart-header .download-button:visited{color:#ffffff !important;}
+@media screen and (min-width:320px) {
+
+.cart-header {
+    padding:7px 10px;
+    height:54px;
+  
+}   
+
+.cart-header > .logo >img{
+        height: 40px;
+width: 40px;
+}
+
+.cart-header > .introduce > .p1 {
+    font-size:16px;
+}
+.cart-header > .introduce > .p2 {
+    font-size:12px;
+}
+.cart-header > .introduce > .p2 > a.text {
+    padding-right:3px;
+}
+.cart-header > .introduce > .p2 > .icon-star {
+    width:12px;
+    height:12px;
+   
+}
+
+.cart-header .download-button {
+  right: 10px;
+  top: 7px;
+  font-size: 15px;
+  height: 40px;
+  line-height: 40px;
+  width: 80px;
+  border-radius: 22px;
+}
+
+}
+
+
+@media screen and (min-width:640px) {
+
+.cart-header {
+    padding:14px 20px;
+    height:108px;
+  
+}   
+
+.cart-header > .logo >img{
+  height:80px;
+    width:80px;
+}
+.cart-header > .introduce {
+  padding-left: 8px;
+}
+.cart-header > .introduce > .p1 {
+    font-size:28px;
+}
+.cart-header > .introduce > .p2 {
+    font-size:20px;
+}
+.cart-header > .introduce > .p2 > a.text {
+    padding-right:6px;
+}
+.cart-header > .introduce > .p2 > .icon-star {
+    width:24px;
+    height:24px;
+   
+}
+
+.cart-header .download-button {
+  right: 20px;
+  top: 14px;
+  font-size: 26px;
+  height: 80px;
+  line-height: 80px;
+  width: 160px;
+  border-radius:44px;
+}
+
+}

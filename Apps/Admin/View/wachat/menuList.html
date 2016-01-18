@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{$CONF['mallTitle']}后台管理中心</title>
+    <link href="__PUBLIC__/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ROOT__/Apps/Admin/View/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+    <script src="__PUBLIC__/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/plugins/plugins/plugins.js"></script>
+</head>
+<body class='wst-page'>
+<div class='wst-tbar' style='text-align:right;height:25px;'>
+    <a class="btn btn-success glyphicon glyphicon-plus" href='{:U("Admin/Weixin/addMenu")}' style='float:right'>新增</a>
+</div>
+<div class="wst-body">
+    <table class="table table-hover table-striped table-bordered wst-list">
+        <thead>
+        <tr>
+            <th width='40'>ID</th>
+            <th width='120'>显示名称</th>
+            <th>网址</th>
+            <th width='120'>类型</th>
+            <th width='300'>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="data" id="vo">
+            <tr>
+            <td>{$key+1}</td>
+            <td><if condition="$vo.leftpin neq 0">{$vo.lefthtml}</if>{$vo.we_menu_name}</td>
+            <td>{$vo.we_menu_typeval}</td>
+            <td>
+                <if condition="($vo['we_menu_type'] eq 1)">URL菜单链接
+                <else />关键词回复菜单
+                </if>
+            </td>
+            <td>
+                <a class="btn btn-default glyphicon glyphicon-pencil" href='{:U("Admin/Weixin/addMenu",array("id"=>$vo["id"]))}'>修改&nbsp;</a>
+                <a class="btn btn-default glyphicon glyphicon-trash" onclick="del({$vo.id})">刪除</a>
+            </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+    <div><button><a href='{:U("Admin/Wechat/createMenu")}'>生成微信菜单</a></button></div>
+</div>
+</body>
+<script>
+    function del(id){
+        var r=confirm("你确定要删除吗？")
+        if (r==true){
+            $.ajax({
+                url:'{:U("Admin/Weixin/delMenu")}',// 跳转到 action
+                data:{'id':id},
+                type:"POST",
+                dataType:"json",
+                success:function(data){
+                    if(data.ok>0){
+                        window.location.href='{:U("Admin/Weixin/menuList")}';
+                    }
+                }
+            });
+        }
+    }
+</script>
+</html>

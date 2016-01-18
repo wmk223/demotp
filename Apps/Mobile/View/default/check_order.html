@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telphone=no, email=no"/>
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>购物车</title>
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/zsharee6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/cart-headere6b0.css?v=20151219t" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+</head>
+<body>
+<div class="zshowp-header clearfix">
+	<a class="back" href="javascript:history.back(-1);"><img src="__ROOT__/Apps/Mobile/View/default/app/images/icon_back.png" alt=""></a>
+</div>
+<div class="zcart-box">
+	<div class="box">
+		<div class="pos">
+			<input type="hidden" id="consigneeId" name="consigneeId" value="{$addressList['addressId']}"/>
+			<h3>收货人：{$addressList.userName} 电话：{$addressList.userPhone}</h3>
+			<p>{$addressList.address}</p>
+			<a class="other" href="{:U('Mobile/Users/selectAdress',array('rnd'=>$rnd))}"><img src="__ROOT__/Apps/Mobile/View/default/app/images/goods_namebtn.png" alt=""></a>
+		</div>
+		<div class="pos">
+			<span>送货方式</span>
+			<label>
+				<input id="isself_0" name="isself" checked="checked" type="radio" value="0" />送货上门
+			</label>
+			<label>
+				<input id="isself_1" name="isself" type="radio" value="1" />自提
+			</label>
+			<label>
+				<input id="needreceipt" name="needreceipt" type="hidden" value="1" />
+			</label>
+		</div>
+	</div>
+	<div class="box">
+		<volist name="catgoods" key="key" id="shopgoods">
+			<div class="title">
+				<h3>{$shopgoods["shopgoods"][0]["shopName"]}</h3>
+				<p><input type="hidden" id="deliveryMoney_{$key}" value='<if condition='$shopgoods["totalMoney"] lt $shopgoods["shopgoods"][0]["deliveryFreeMoney"]'>¥{$shopgoods["shopgoods"][0]["deliveryMoney"]}<else/>免运费</if>'/>
+					运费:<span id="deliveryMoney_span_{$key}">
+                    	<if condition='$shopgoods["totalMoney"] lt $shopgoods["shopgoods"][0]["deliveryFreeMoney"]'>¥{$shopgoods["shopgoods"][0]["deliveryMoney"]}<else/>免运费</if>
+					</span>&nbsp;&nbsp;
+					小计￥<strong id="">{$shopgoods["totalMoney"]}</strong>
+				</p>
+			</div>
+			<volist name="shopgoods['shopgoods']" key="key2" id="goods">
+				<div class="detail no-checkbox">
+					<img src="__ROOT__/{$goods['goodsThums']}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" alt="placeholder+image">
+					<h3>{$goods["goodsName"]}<if condition="$goods['attrVal'] neq ''">【{$goods['attrName']}:{$goods['attrVal']}】</if></h3>
+					<p>￥{$goods["shopPrice"]}</p>
+					<div class="plus-minus">
+						<span>数量:【{$goods['cnt']}】</span>
+						<if condition="$goods['goodsStock'] egt $goods['cnt']">
+							有货
+						<elseif condition="$goods['goodsStock'] eq 0"/>
+							<span style="color:red;">无货</span>
+						<else/>
+							<span style="color:red;">库存不足,仅剩{$goods["goodsStock"]}份</span>
+						</if>
+					</div>
+				</div>
+			</volist>
+		</volist>
+	</div>
+	<div class="price">
+		<h3>总计<strong>￥
+			<input type="hidden" id="gtotalMoney" value="{$gtotalMoney}"/>
+			<input type="hidden" id="totalMoney" value="{$totalMoney}"/>
+			<span id="totalMoney_span">{$totalMoney}</span>
+		</strong></h3>
+		<a class="account" onclick="javascript:submitOrder();" id="order-submit">付款</a>
+	</div>
+</div>
+<style>
+	.cart_num{
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		background-color: red;
+		border-radius: 100px;
+		position:fixed;
+		margin-right: 20px;
+		z-index: 100;
+		color: #FFFFFF;
+		text-align: center;
+	}
+</style>
+<footer class="f-footer">
+	<ul class="footer-ul">
+		<li ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+			<p class="tit">首页</p></a></li>
+		<li ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+			<p class="tit">分类</p></a></li>
+		<li class="actived" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+			<notempty name="goodscnt">
+				<span class="cart_num">{$goodscnt}</span>
+			</notempty>
+			<p class="tit">购物车</p></a></li>
+		<li ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+			<p class="tit">我的</p></a></li>
+	</ul>
+</footer>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.mine6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Public/js/think.js"></script>
+<script>
+	function submitOrder(){
+		$.post("{:U('Home/Goods/checkGoodsStock')}" ,{},function(data) {
+			var goodsInfo = data;
+			var flag = true;
+			for(var i=0;i<goodsInfo.length;i++){
+				var goods = goodsInfo[i];
+				if(goods.isSale<1 || goods.goodsStock<=0){
+					flag = false;
+				}
+			}
+			if(flag){
+				var consigneeId = $("#consigneeId").val();
+				var isself = $('input:radio[name="isself"]:checked').val();
+				var needreceipt = $('#needreceipt').val();
+				var orderunique = new Date().getTime();
+				var url = "/index.php/Mobile/Orders/submitOrder/consigneeId/"+consigneeId+"/isself/"+isself+"/needreceipt/"+needreceipt+"/orderunique/"+orderunique+".html";
+				location.href= url;
+			}else{
+				if(goods.isSale<1){
+					alert('商品'+goods.goodsName+'已下架，请返回重新选购!');
+				}else if(goods.goodsStock<=0){
+					alert('商品'+goods.goodsName+'库存不足，请返回重新选购!');
+				}
+			}
+
+		},'json');
+
+
+	}
+</script>
+</body>
+</html>

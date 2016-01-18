@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>个人中心</title>
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+    <link href="__ROOT__/Apps/Mobile/View/default/app/css/zshowproducte6b0.css?v=20151219t" rel="stylesheet"></head>
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+<body>
+
+<div class="zshowp-header clearfix">
+    <a href="{:U('Mobile/Users/index')}" class="zhowp-htab actived"><b>个人资料</b></a>
+    <a href="{:U('Mobile/Orders/queryByPage')}" class="zhowp-htab"><b>我的订单</b></a>
+</div>
+
+<div class="my-file">
+        <div class="box">
+            <h3 >昵称</h3>
+            <div class="name" style="border: 0px"><h2>{$user.userName}</h2></div>
+        </div>
+        <div class="box">
+            <h3>头像</h3>
+            <div class="name" style="border: 0px"><img src="{$user.userPhoto}" alt="" style="width: 40px;height: 40px"></div>
+        </div>
+        <div class="box">
+            <h3>收货地址</h3>
+            <volist name="list" id="vo">
+                <div class="loc">
+                    <span class="pos">{$vo.address}</span>
+                    <if condition="($vo['isDefault'] eq 1)">
+                        <button class="default">默认地址</button>
+                        <else/>
+                        <button class="default" onclick="isDefault({$vo.addressId})">设置为默认地址</button>
+                    </if>
+                    <button class="delete" onclick="delAddress({$vo.addressId})">删除</button>
+                </div>
+            </volist>
+            <div class="new">
+                <a class="add-loc" href="{:U('Mobile/UserAddress/toEdit')}">添加地址</a>
+            </div>
+        </div>
+</div>
+<style>
+    .cart_num{
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        background-color: red;
+        border-radius: 100px;
+        position:fixed;
+        margin-right: 20px;
+        z-index: 100;
+        color: #FFFFFF;
+        text-align: center;
+    }
+</style>
+<footer class="f-footer">
+    <ul class="footer-ul">
+        <li  ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+            <p class="tit">首页</p></a></li>
+        <li class="aa" ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+            <p class="tit">分类</p></a></li>
+        <li class="aa" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+            <notempty name="goodscnt">
+                <span class="cart_num">{$goodscnt}</span>
+            </notempty>
+            <p class="tit">购物车</p></a></li>
+        <li  class="actived" ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+            <p class="tit">我的</p></a></li>
+    </ul>
+</footer>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/idangerous.swiper.mine6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/zshowproducte6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script>
+    function isDefault(obj){
+        $.post("{:U('Mobile/Users/isDefault')}",{'addressId':obj},function(data) {
+            if(data.ok>0){
+                if (confirm('是否设置为默认地址?')) {
+                    location.href = "{:U('Mobile/Users/index')}";
+                    return;
+                }
+            }
+        },'json');
+    }
+    function delAddress(addressId){
+        $.post("{:U('Mobile/Users/delAddress')}",{'addressId':addressId},function(data) {
+            if(data.ok>0){
+                if (confirm('是否要删除?')){
+                    location.href = "{:U('Mobile/Users/index')}";
+                    return;
+                }
+            }
+        },'json');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telphone=no, email=no"/>
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title></title>
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/swipee6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/goods_details3e6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/selectsizee6b0.css?v=20151219t" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+</head>
+	<style>
+		.wst-goods-attrs-on{
+			border: 0px solid #FFFFFF;
+			color: #FFFFFF;
+			background: #f8718c;
+		}
+	</style>
+<body>
+<div class="zshowp-header clearfix">
+	<a class="back" href="javascript:history.go(-1);"><img src="__ROOT__/Apps/Mobile/View/default/app/images/icon_back.png" alt=""></a>
+</div>
+<div class="first-layer">
+	<div class="slide-box clearfix">
+		<div id="slider" class="swipe" style="visibility: visible;">
+			<div class="swipe-wrap" style="width: 11418px;">
+				<volist name="goodsImgs" key="k" id="vo">
+					<div class='wrap' data-index="{$k}">
+						<img src="__ROOT__/{$vo['goodsImg']}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" class="lazy" style="width:100%;">
+					</div>
+				</volist>
+			</div>
+			<ul class="ul_swipe">
+				<volist name="goodsImgs" key="k" id="vo">
+					<if condition="$k eq 1">
+						<li class="opcity100">&nbsp;</li>
+					<else/>
+						<li class="">&nbsp;</li>
+					</if>
+				</volist>
+			</ul>
+		</div>
+	</div>
+	<div class="zgshow-price clearfix">
+		<p class="zgshow-pf zgshow-pfprice">￥{$goodsDetails.shopPrice}<b class="zshow-pold">￥{$goodsDetails.marketPrice}</b></p>
+		<p class="zgshow-pf zgshow-ptimeer">
+			<!--<span class="zgshow-time" data-countdown='{"disabled": false, "duration": 14610000, "prepering": false, "elapsed": -6990000, "distance":  21600000}'></span>-->
+		</p>
+		<p class="zgshow-pf zgshow-ptip">
+
+		</p>
+	</div>
+	<div class="goods-detailsbox width320">
+		<h2 class="goods-tit width290 mar-auto">{$goodsDetails.goodsName}</h2>
+		<ul class="goods-credit clearfix mar-auto">
+			<li class="left">
+				<i class="icon_z"></i>
+				<span class="goods-credit-zi">正品认证</span>
+			</li>
+			<li class="goods-credit_3 left">
+				<i class="icon_s"></i>
+				<span class="goods-credit-zi">品牌授权</span>
+			</li>
+			<li class="goods-credit_3 left">
+				<i class="icon_shiming"></i>
+				<span class="goods-credit-zi">如实描述</span>
+			</li>
+		</ul>
+	</div>
+	<div class="zshow-tips">
+		<p>温馨提示：特价商品，不支持退款，满49元包邮</p>
+		<p>官方正品，下单后48小时内发货！</p>
+		<p>全国统一咨询热线：{$CONF['phoneNo']}</p>
+	</div>
+		<notempty name="goodsShop.shopId">
+		<div class="goods-shopnamebox mar-auto">
+			<a href="{:U('Mobile/Shops/toShopGoodsCats',array('shopId'=>$goodsShop['shopId']))}">
+				<dl class="goods-shopname">
+					<dt class="goods-shopname-imgout zmy-hbox">
+						<img src="__ROOT__/{$goodsShop.shopImg}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" class="lazy">
+					</dt>
+					<dd class="goods-shopname-ziout">
+						<h2 cls="goods-shopname-tit">{$goodsShop.shopName}</h2>
+						<p><i class="zcomment-count">店铺号码:{$goodsShop.shopTel}</i></p>
+					</dd>
+				</dl>
+				<p class="zgshow-go">点击进入店铺</p>
+			</a>
+		</div>
+	</notempty>
+	<!--<div class="zcomment-remark">-->
+
+	<!--</div>-->
+	<div class="zcomment-remark">
+		<if condition="$goodsApp.total eq 0">
+			<img src="__ROOT__/Apps/Mobile/View/default/app/images/zgimg_wx.png" class="zgshow-sbarimg zgshow-wx lazy" alt="买家评论">
+			<a href="javascript:;" class="zcomment-linkmore zcomment-link-nb">暂无评价</a>
+		<else />
+			<img src="__ROOT__/Apps/Mobile/View/default/app/images/zgimg_wx.png" class="zgshow-sbarimg zgshow-wx lazy" alt="买家评论">
+			<h2 class="zcomment-tit">宝贝评论（<b>74</b>）</h2>
+			<dl class="zcomment-pitem">
+				<dt class="zcomment-per clearfix">
+					<img src="__ROOT__/Apps/Mobile/View/default/app/images/default.png" class="zcomment-perimg lazy">
+				<p class="zomment-permess clearfix"><b class="zcomment-pername">匿名</b><b class="zcomment-stary zcomment-stary-5"></b>
+				</p>
+				</dt>
+				<dd class="zcomment-txt">刚收到，宝贝很不错！</dd>
+				<dd class="zcomment-othertxt"><b class="zcomment-odate">2015-12-23 16:30:07</b></dd>
+			</dl>
+			<a href="__ROOT__/Apps/Mobile/View/default/app/comment/2104/96029.html" class="zcomment-linkmore">查看全部</a>
+		</if>
+	</div>
+	<img src="__ROOT__/Apps/Mobile/View/default/app/images/zgtip_lookmore.png" class="zgtip-lookmore lazy">
+	<notempty name="goodsBrand.brandId">
+		<div class="goods-brandinfo-box width320">
+			<div class="goods-brandinfo width300 mar-auto">
+				<h2 class="goods-brandtit">品牌</h2>
+				<dl class="goods-brand">
+					<dt class="goods-brand-imgout">
+						<a href="javascript:void(0)">
+							<img src="__ROOT__/{$goodsBrand.brandIco}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" class="lazy">
+						</a>
+					</dt>
+					<dd class="goods-brand-ziout">
+						<a href="javascript:void(0)">
+							<h2 class="goods-brand-tit">{$goodsBrand.brandName}</h2>
+							<p class="goods-brand-jianjie"></p>
+						</a>
+					</dd>
+				</dl>
+				<p class="goods-brand-infocon">{$goodsBrand.brandDesc}</p>
+			</div>
+		</div>
+	</notempty>
+	<div class="goods-imgbox width320 mar-auto">
+		{$goodsDetails.goodsDesc}
+	</div>
+</div>
+<div class="cartbox width320">
+	<div class="cart">
+		<a href="javascript:;" onclick="addCart({$goodsDetails.goodsId}, 1, '{$goodsDetails.goodsImg}')">
+			<div class="cart-l">
+			</div>
+		</a>
+		<a href="javascript:;" class="cart-r-addcartbtn buy-button ">加入购物车</a>
+	</div>
+</div>
+<span class="zerror-tip"></span>
+</div>
+<div class="mask-layer">
+	<a href="javascript:void(0)" class="close-button"></a>
+	<div class="pop-summury">
+		<div class="img">
+			<img src="__ROOT__/{$goodsDetails['goodsImg']}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'" class="lazy">
+		</div>
+		<div class="main">
+		</div>
+	</div>
+	<div class="pop-select">
+		<notempty name="goodsAttrs">
+			<dl class="sel-color">
+				<dt>规格</dt>
+				<dd>
+					<volist name="goodsAttrs['priceAttrs']" id="avo">
+						<b class="zgshow-ptipb" onclick='javascript:checkStock(this)' dataId='{$avo["id"]}'>
+							<input type="checkbox" class="attrs" value="{$avo['id']}" style="display: none">
+							<span class='wst-goods-attrs'>{$avo['attrVal']}</span>
+						</b>
+					</volist>
+				</dd>
+			</dl>
+		</notempty>
+		<dl class="sel-count">
+			<dt>购买数量</dt>
+			<dd><a class="minus-button">-</a><input maxlength="4" id="buy-num" class="digital-input" type="text" value="1"><a class="plus-button">+</a></dd>
+		</dl>
+		<a class="sure-button" style="background-color: #fff; border:1px double #FD375A; color: #FD375A;" href="javascript:void(0)" onclick="addCart({$goodsDetails.goodsId}, 0, '{$goodsDetails.goodsImg}')">加入购物</a>
+	</div>
+	<span class="error-tip"></span>
+</div>
+<div class="zshop-discount">
+	<!--<div class="zshop-discount-m">-->
+		<!--<div class="zshop-discount-box">-->
+			<!--<div class="zshop-discount-txt">-->
+				<!--<h3 class="zshop-discount-tit">店铺优惠</h3>-->
+				<!--<p><b class="zshop-discount-ptip">满就送</b>2015.12.18 18:00-2015.12.19 24:00</p>-->
+				<!--<p>1、满38元，送纾雅日用卫生巾一盒</p>-->
+				<!--<p>2、满88元，送素佳护手霜一支+纾雅日用卫生巾一盒</p>-->
+				<!--<p>3、满168元，送思埠洁面仪一支</p>-->
+				<!--<p class="zshop-discount-pend">注：思埠产品不参与本次活动</p>-->
+			<!--</div>-->
+			<!--<a class="zshop-discount-close" href="javascript:;">关闭</a>-->
+		<!--</div>-->
+	<!--</div>-->
+</div>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.mine6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/jquery.lazyload.mine6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/swipee6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/myslidere6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/SRTimere6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/SRCountdowne6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/progressbare6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+
+<script type="text/javascript">
+	$(function () {
+		$(".sel-color").find('b').eq(0).addClass('wst-goods-attrs-on');
+		$(":checkbox").eq(0).attr("checked",true);
+		var $first_layer = $('.first-layer');
+		$('.minus-button').click(function () {
+			var value = parseInt($('.digital-input').val());
+			if (value <= 1)
+				$('.digital-input').val(1);
+			else
+				$('.digital-input').val(value - 1);
+		});
+		$('.plus-button').click(function () {
+			if ($('.digital-input').val() >= 9999)
+				$('.digital-input').val(9999);
+			else
+				$('.digital-input').val(parseInt($('.digital-input').val()) + 1);
+		});
+		$('.buy-button').click(function () {
+			if ($(this).hasClass('wait')) {
+				return false;
+			}
+			//选择规格
+			var screen_h = $(window).height();
+			var $mask_layer = $('.mask-layer');
+			if ($mask_layer.length > 0) {
+				$mask_layer.css('display', 'block').animate({'left': '0px'}, 500);
+				$first_layer.css('height', screen_h + 'px');
+			}
+		});
+		//关闭按钮
+		$('.close-button').click(function () {
+			var $mask_layer = $('.mask-layer');
+			$mask_layer.animate({'left': '102%'}, 500);
+			$first_layer.css('height', "auto");
+
+			setTimeout(function () {
+				$mask_layer.css('display', 'none');
+
+			}, 500);
+		});
+	});
+	function addCart(goodsId,type,goodsThums){
+		var params = {};
+		params.goodsId = goodsId;
+		params.gcount = parseInt($("#buy-num").val(),10);
+		params.rnd = Math.random();
+		params.goodsAttrId = parseInt($(':checked').val())?parseInt($(':checked').val()):0;
+		$.post("{:U('Mobile/Cart/addToCartAjax')}",params,function(data) {
+			if(type==1){
+				location.href= "{:U('Mobile/Cart/toCart')}";
+			}else{
+				alert("添加成功!");
+				var $mask_layer = $('.mask-layer');
+				var $first_layer = $('.first-layer');
+				$mask_layer.animate({'left': '102%'}, 500);
+				$first_layer.css('height', "auto");
+
+				setTimeout(function () {
+					$mask_layer.css('display', 'none');
+
+				}, 500);
+			}
+		});
+	}
+	function checkStock(obj){
+		$(obj).addClass('wst-goods-attrs-on').siblings().removeClass('wst-goods-attrs-on');
+		$(":checkbox").removeAttr('checked');
+		var input = $(obj).find($('.attrs'));
+		input.attr("checked",true);
+	}
+</script>
+</body>
+</html>

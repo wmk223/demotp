@@ -1,0 +1,45 @@
+/*
+	2015-9-22
+	topbar css
+	by:sibu zxy
+*/
+/*--==ztopbar-box (start)==--*/
+.ztopbar-box{ position:relative; width:100%; display:block;}
+.ztopbar-box img{ display:block; width:100%;}
+.ztopbar-txt{ position:absolute; width:68%; top:50%; left:3%;  -moz-transform:translate(0,-50%); -ms-transform:translate(0,-50%); -o-transform:translate(0,-50%); -webkit-transform:translate(0,-50%); transform:translate(0,-50%);}
+.ztopbar-txtp{ text-align:left; color:#FFF59D;}
+.ztopbar-txth{ display:block; overflow:hidden; width:100%; color:#fff; text-align:left;}
+.ztopbar-txth b{ display:inline-block; font-weight:bold; text-align:center;}
+.ztopbar-coopname{width:33.5%; white-space: nowrap; text-overflow: ellipsis;    -moz-text-overflow: ellipsis; overflow: hidden;}
+.ztopbar-close{ position:absolute;  background: url(../images/ztop_close.png) no-repeat center center; background-size:contain;}
+.ztop-btn{ position:absolute; width:20%; top:50%; right:0.83em;  -moz-transform:translate(0,-50%); -ms-transform:translate(0,-50%); -o-transform:translate(0,-50%); -webkit-transform:translate(0,-50%); transform:translate(0,-50%); -moz-border-radius:2.8em; -ms-border-radius:2.8em; -o-border-radius:2.8em; -webkit-border-radius:2.8em; border-radius:2.8em; background:#fff; text-align:center; color:#FF6862 !important;}
+/*--====ztopbar-box (end)====--*/
+
+/*交易完成--广告*/
+.pop-box{position: fixed;left: 0;top: 0;width: 100%;min-height:100%;background: rgba(0,0,0,0.6);z-index: 10000000;}
+.pop-img{width: 65.625%;max-width:300px;position:absolute;left:50%;top:50%;display: block;transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);     /* IE 9 */
+    -moz-transform:translate(-50%,-50%);    /* Firefox */
+    -webkit-transform:translate(-50%,-50%); /* Safari 和 Chrome */
+    -o-transform:translate(-50%,-50%);  /* Opera */}
+
+/*交易完成--广告  end*/
+@media only screen and (min-width: 320px)  {
+	/*--==ztopbar-box (start)==--*/
+	.ztopbar-txtp{ font-size:12px;}
+	.ztopbar-txth{ font-size:18px;}
+	.ztopbar-txth b{ height:23px;}
+	.ztopbar-close{ width:15px; height:15px; top:2px; right:2px;}
+	.ztop-btn{ font-size:12px; height:30px; line-height:30px; /*width:70px;*/}
+	/*--==ztopbar-box (end)==--*/
+   
+}
+@media only screen and (min-width: 640px)  {
+	/*--==ztopbar-box (start)==--*/
+	.ztopbar-txtp{ font-size:24px;}
+	.ztopbar-txth{ font-size:36px;}
+	.ztopbar-txth b{ height:46px;}
+	.ztopbar-close{width:30px; height:30px; top:5px; right:5px;}
+	.ztop-btn{ font-size:24px; height:50px; line-height:50px; /*width:140px;*/}
+	/*--==ztopbar-box (end)==--*/
+}

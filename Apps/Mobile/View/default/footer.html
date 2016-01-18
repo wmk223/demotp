@@ -1,0 +1,30 @@
+<style>
+	.cart_num{
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		background-color: red;
+		border-radius: 100px;
+		position:fixed;
+		margin-right: 20px;
+		z-index: 100;
+		color: #FFFFFF;
+		text-align: center;
+	}
+</style>
+<footer class="f-footer" id="footer">
+	<ul class="footer-ul">
+		<li class="actived" ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+			<p class="tit">首页</p></a></li>
+		<li class="aa" ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+			<p class="tit">分类</p></a></li>
+		<li class="aa" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+			<notempty name="goodscnt">
+				<span class="cart_num">{$goodscnt}</span>
+			</notempty>
+			<p class="tit">购物车</p></a></li>
+		<li  class="aa" ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+			<p class="tit">我的</p></a></li>
+	</ul>
+</footer>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.min.js"></script>

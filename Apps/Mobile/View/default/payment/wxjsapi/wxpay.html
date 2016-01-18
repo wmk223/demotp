@@ -1,0 +1,92 @@
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+  <meta name="format-detection" content="telphone=no, email=no"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="format-detection" content="telephone=no" />
+  <title>微信支付</title>
+  <link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+  <link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+  <link href="__ROOT__/Apps/Mobile/View/default/app/css/zsharee6b0.css?v=20151219t" rel="stylesheet">
+  <link href="__ROOT__/Apps/Mobile/View/default/app/css/cart-headere6b0.css?v=20151219t" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Apps/Mobile/View/default/app/css/custom.css">
+</head>
+<body>
+<div class="zshowp-header clearfix">
+  <a class="back" href="{:U('Mobile/Orders/queryByPage')}"><img src="__ROOT__/Apps/Mobile/View/default/app/images/icon_back.png" alt=""></a>
+</div>
+<div class="zcart-box">
+  <div class="box">
+    <div class="ok">
+      <h3>支付方式：微信支付</h3>
+      <h3>微信订单号：{$res.order_sn}</h3>
+      <h3>总金额：￥{$res.order_amount}</h3>
+    </div>
+  </div>
+
+  <div class="price">
+    <button class="account" onclick="callpay();">确定付款</button>
+  </div>
+</div>
+<footer class="f-footer">
+  <ul class="footer-ul">
+    <li ><a href="{:U('Mobile/Index/Index')}"><i class="icon-footer1"></i>
+      <p class="tit">首页</p></a></li>
+    <li ><a href="{:U('Mobile/GoodsCats/oneCateList')}"><i class="icon-footer2"></i>
+      <p class="tit">分类</p></a></li>
+    <li class="actived" ><a href="{:U('Mobile/Cart/toCart')}"><i class="icon-footer3"></i>
+      <notempty name="goodscnt">
+        <span class="cart_num">{$goodscnt}</span>
+      </notempty>
+      <p class="tit">购物车</p></a></li>
+    <li ><a href="{:U('Mobile/Users/index')}"><i class="icon-footer4"></i>
+      <p class="tit">我的</p></a></li>
+  </ul>
+</footer>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.mine6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script type="text/javascript">
+  var order_sn = "{$res['order_sn']}";
+  //调用微信JS api 支付
+  function jsApiCall(){
+    WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+    <?php echo $jsApiParameters; ?>,
+    function(res){
+      //如果支付成功
+      if (res.err_msg == 'get_brand_wcpay_request:ok') {
+        //支付成功后跳转的地址
+        var url = "{:U('Mobile/Orders/queryByPage')}";
+        $('.ok').html('<h3>支付成功</h3>');
+        $(".price").html("<a class='account' href='"+url+"'>返回我的订单</a>");
+      }else if (res.err_msg == 'get_brand_wcpay_request:cancel') {
+        $('button').css('opacity',1);
+      }else if (res.err_msg == 'get_brand_wcpay_request:fail') {
+        $('button').css('opacity',1);
+      }else {
+        $('button').css('opacity',1);
+      }
+    }
+  );
+  }
+  function callpay(){
+    if($('button').css('opacity')!=1){return false;}
+    $('button').css('opacity','0.1');
+    if (typeof WeixinJSBridge == "undefined"){
+      if( document.addEventListener ){
+        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+      }else if (document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+      }
+    }else{
+      jsApiCall();
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telphone=no, email=no"/>
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no" />
+	<title>分类</title>
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/publice6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/commone6b0.css?v=20151219t" rel="stylesheet">
+	<link href="__ROOT__/Apps/Mobile/View/default/app/css/zshowproducte6b0.css?v=20151219t" rel="stylesheet"></head>
+<body>
+<div id='wx_pic' style='width:0;height:0;overflow:hidden;'><img src="" class="index-topconimg"/></div>
+<div class="zshowp-header clearfix">
+	<a href="{:U('Mobile/GoodsCats/oneCateList')}" class="zhowp-htab"><b>分类</b></a>
+	<a href="{:U('Mobile/Shops/toShopStreet')}" class="zhowp-htab actived"><b>店铺</b></a>
+</div>
+<div class="zshowp-slid">
+	<div class="zshowp-smain swiper-container">
+		<div class="pagination"></div>
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide actived">
+				<a href="{:U('Mobile/Shops/toShopGoodsCats',array('shopId'=>$vo['shopId']))}" class="zshowp-slidper">
+					<img src="__ROOT__/{$data['shopImg']}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'">
+					<p class="zshowp-slidtxt"><b>{$data.shopName}</b></p>
+				</a>
+			</li>
+			<volist name="list" id="vo">
+				<li class="swiper-slide">
+					<a href="#" class="zshowp-slidper">
+						<img src="__ROOT__/{$vo['cateImg']}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'"/>
+						<p class="zshowp-slidtxt"><b>{$vo.catName}</b></p>
+					</a>
+				</li>
+			</volist>
+			<li class="swiper-slide zshowp-slidper">
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="zshowp-rgoods">
+	<volist name="list" id="vo">
+		<div class="zshowp-items">
+			<notempty name="vo.list">
+				<p class="zshowp-items-p">{$vo.catName}</p>
+				<ul class="zsp-itemsul clearfix">
+					<volist name="vo.list" id="list">
+						<li class="zsp-itemsli">
+							<a href="{:U('Mobile/Goods/getShopsGoodsCatGoodsList',array('catId'=>$list['goodsCatId2'],'shopId'=>$data['shopId']))}">
+								<img src="__ROOT__/{$list.cateImg}" onError="this.src='__ROOT__/Public/images/item-pic.jpg'"/>
+								<p>{$list.catName}</p>
+							</a>
+						</li>
+					</volist>
+				</ul>
+			</notempty>
+		</div>
+	</volist>
+</div>
+<include file="./Apps/Mobile/View/default/footer.html" />
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/idangerous.swiper.mine6b0.js?v=20151219t"></script>
+<script type="text/javascript" src="__ROOT__/Apps/Mobile/View/default/app/js/zshowproducte6b0.js?v=20151219t"></script>
+<script src="__ROOT__/Apps/Mobile/View/default/app/js/commone6b0.js?v=20151219t"></script>
+<script>setCookie('uid', 1, 7200);</script>
+</body>
+</html>
